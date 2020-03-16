@@ -1,0 +1,13 @@
+{
+    "database": "stream",
+    "username": "sa",
+    "password": "123456Aa@",
+    "host": "118.71.224.167",
+    "dialect": "mssql",
+    "port": 1433,
+    "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+    }
+}

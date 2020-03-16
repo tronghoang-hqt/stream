@@ -1,7 +1,6 @@
 const fs = require('fs');
-
 module.exports = {
-    streaming: function (videoSource) {
+    streaming: function(videoSource) {
         return fs.createReadStream(videoSource);
-    }
+    },
 }

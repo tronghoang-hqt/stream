@@ -1,11 +1,36 @@
-const moongse = require('mongoose');
-var VideoSchema = new moongse.Schema({
-    _id: { type: mongoose.Schema.Types.ObjectId },
-    description: { type: string },
-    source: { type: string, require },
-    card: { type: string, require },
-    background: { type: string, require },
-    title: { type: string, require },
-    category: { type: string, require }
-})
-export default mongoose.model('Video', VideoSchema)
+const Sequelize = require('sequelize');
+const sequelize = require('../data/connectDB')
+const Video = sequelize.define('video', {
+    video_id: {
+        type: Sequelize.STRING,
+        primaryKey: true,
+        allowNull: false,
+    },
+    description: {
+        type: Sequelize.STRING,
+    },
+    source: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    card: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    background: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    category: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    }
+}, {
+    sequelize,
+    timestamps: false,
+});
+module.exports = Video;
