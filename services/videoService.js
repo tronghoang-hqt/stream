@@ -5,8 +5,10 @@ module.exports = {
         return Category.findAll({
             include: [{
                 model: Video,
-                required: true
-            }]
+                required: true,
+                attributes: ['description', 'sources', 'card', 'background', 'title', 'studio']
+            }],
+            attributes: ['category']
         })
     }
 }
