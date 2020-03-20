@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../data/connectDB')
+const Category = require('../models/category')
 const Video = sequelize.define('video', {
     video_id: {
         type: Sequelize.STRING,
@@ -9,7 +10,7 @@ const Video = sequelize.define('video', {
     description: {
         type: Sequelize.STRING,
     },
-    source: {
+    sources: {
         type: Sequelize.STRING,
         allowNull: false,
     },
@@ -25,12 +26,23 @@ const Video = sequelize.define('video', {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    category: {
+    studio: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+
+    category_Id: {
         type: Sequelize.STRING,
         allowNull: false,
     }
 }, {
     sequelize,
     timestamps: false,
+});
+Category.hasMany(Video, { foreignKey: 'category_Id' })
+Video.belongsTo(Category, {
+    foreignKey: {
+        name: 'category_Id'
+    }
 });
 module.exports = Video;
